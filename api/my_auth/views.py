@@ -1,14 +1,9 @@
-from rest_framework import status, generics
-from rest_framework.response import Response
-from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework import status
 from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 from rest_framework.views import APIView
-from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework.exceptions import AuthenticationFailed
-from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework.permissions import IsAuthenticated
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework_simplejwt.authentication import JWTAuthentication
 from .serializers import UserSerializer, TokenRefreshSerializer, LoginSerializer, LogoutSerializer
 
@@ -80,7 +75,6 @@ class LogoutApiView(APIView):
                 return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             else:
                 return Response({"success": "User logged out."}, status=status.HTTP_200_OK)
-
 
 
 class UserProfileApiView(APIView):

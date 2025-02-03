@@ -1,8 +1,7 @@
-from django.contrib.auth import get_user_model , authenticate
+from django.contrib.auth import get_user_model
 from rest_framework import serializers
-from rest_framework.permissions import AllowAny
 from rest_framework_simplejwt.tokens import RefreshToken
-import jwt
+
 User = get_user_model()
 
 
@@ -21,6 +20,7 @@ class LoginSerializer(serializers.Serializer):
 
         data['user'] = user
         return data
+
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -81,6 +81,7 @@ class LogoutSerializer(serializers.Serializer):
 
 class TokenRefreshSerializer(serializers.Serializer):
     refresh_token = serializers.CharField()
+
     def validate(self, data):
         refresh_token_str = data.get('refresh_token')
         try:
@@ -102,5 +103,3 @@ class TokenRefreshSerializer(serializers.Serializer):
         access_token = str(refresh.access_token)
         data['access_token'] = access_token
         return data
-
-

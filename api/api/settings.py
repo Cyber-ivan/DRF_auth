@@ -42,8 +42,8 @@ SIMPLE_JWT = {
 
 
 AUTHENTICATION_BACKENDS = (
-    'my_auth.authentication_backends.EmailBackend',  # Указываем ваш собственный backend
-    'django.contrib.auth.backends.ModelBackend',     # Для использования стандартного бекенда
+    'my_auth.authentication_backends.EmailBackend',
+    'django.contrib.auth.backends.ModelBackend',
 )
 
 LOGGING = {
@@ -57,8 +57,8 @@ LOGGING = {
     },
     'loggers': {
         'django.db.backends': {
-            'level': 'DEBUG',  # Устанавливаем уровень логирования на DEBUG
-            'handlers': ['console'],  # Выводим логи в консоль
+            'level': 'DEBUG',
+            'handlers': ['console'],
         },
     },
 }
